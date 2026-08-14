@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EV Leasing.in — Real Costs & Decision Tools for Electric Vehicles in India</title>
+<meta name="description" content="Free calculators and clear analysis to help you decide if an EV lease or purchase makes financial sense in India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f6f3;
+    --surface: #ffffff;
+    --ink: #1a1a1a;
+    --muted: #5c5c5c;
+    --line: #e6e4df;
+    --accent: #0f6e56;
+    --accent-soft: #e6f4ef;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .topbar {
+    background: var(--ink);
+    color: #fff;
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 0.55rem 1rem;
+  }
+  .topbar strong { color: #a7f3d0; }
+
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .brand {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .brand span { color: var(--accent); font-weight: 400; }
+  .nav-links {
+    display: flex;
+    gap: 1.75rem;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-btn {
+    background: var(--accent) !important;
+    color: #fff !important;
+    padding: 0.55rem 1.1rem;
+    border-radius: 6px;
+    font-weight: 600 !important;
+  }
+
+  .hero {
+    padding: 4.5rem 5% 3.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 0.35rem 0.7rem;
+    border-radius: 4px;
+    margin-bottom: 1.25rem;
+  }
+  h1 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: clamp(2.1rem, 4.5vw, 3.1rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.1rem;
+  }
+  .hero p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 34rem;
+    margin-bottom: 1.75rem;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.8rem 1.4rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.15s ease;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-primary:hover { background: #0b5a46; }
+  .btn-ghost {
+    background: var(--surface);
+    color: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .btn-ghost:hover { border-color: #c9c6bf; }
+
+  .hero-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1.6rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+  }
+  .hero-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.9rem;
+  }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-row span:last-child { font-weight: 600; color: var(--accent); }
+
+  section {
+    padding: 3.5rem 5%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-title {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .section-desc {
+    color: var(--muted);
+    margin-bottom: 2rem;
+    max-width: 36rem;
+  }
+
+  .tools {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .tool {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: 0.15s ease;
+  }
+  .tool:hover {
+    border-color: var(--accent);
+    box-shadow: 0 6px 20px rgba(15,110,86,0.08);
+  }
+  .tool-num {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  .tool h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.45rem;
+  }
+  .tool p {
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+
+  .framework {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+  .framework-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
+    margin-top: 1.5rem;
+  }
+  .q h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+  .q p {
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+
+  .numbers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .num-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 1.25rem;
+    text-align: center;
+  }
+  .num-card .label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+  }
+  .num-card .value {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .notice {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    font-size: 0.85rem;
+    color: #9a3412;
+    max-width: 1100px;
+    margin: 0 auto 2.5rem;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 2rem 5%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  footer a {
+    color: var(--muted);
+    text-decoration: none;
+    margin-left: 1.25rem;
+  }
+  footer a:hover { color: var(--ink); }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; gap: 2rem; }
+    .tools { grid-template-columns: 1fr; }
+    .framework-grid { grid-template-columns: 1fr; }
+    .numbers { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  Independent tools & analysis · <strong>Not a leasing company</strong> · No inventory, no sales pressure
+</div>
+
+<nav>
+  <a href="/" class="brand">EV<span>Leasing.in</span></a>
+  <ul class="nav-links">
+    <li><a href="/calculator.html">Calculator</a></li>
+    <li><a href="/vehicles.html">Compare</a></li>
+    <li><a href="/fleet.html">Fleet</a></li>
+    <li><a href="/calculator.html" class="nav-btn">Run numbers</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div>
+    <div class="hero-label">Free · India-focused · No signup</div>
+    <h1>See the real monthly cost of going electric before you decide</h1>
+    <p>Most “lease” pages are sales pages. This one isn’t. Use the calculators and comparisons to understand lease vs buy, running costs, and residual risk — then talk to actual providers if it still makes sense.</p>
+    <div class="hero-actions">
+      <a href="/calculator.html" class="btn btn-primary">Open cost calculator</a>
+      <a href="/vehicles.html" class="btn btn-ghost">Compare popular EVs</a>
+    </div>
+  </div>
+
+  <aside class="hero-card">
+    <h3>What the calculator shows</h3>
+    <div class="stat-row"><span>Annual fuel/energy cost</span><span>Live</span></div>
+    <div class="stat-row"><span>Maintenance difference</span><span>Live</span></div>
+    <div class="stat-row"><span>CO₂ impact</span><span>Live</span></div>
+    <div class="stat-row"><span>Rough monthly range</span><span>Estimate</span></div>
+    <p style="margin-top:1rem;font-size:0.8rem;color:var(--muted);">Figures are educational estimates only. Final offers come from licensed lessors and dealers.</p>
+  </aside>
+</header>
+
+<section>
+  <h2 class="section-title">Start with one of these</h2>
+  <p class="section-desc">Three practical entry points. No account required.</p>
+  <div class="tools">
+    <a href="/calculator.html" class="tool">
+      <div class="tool-num">01</div>
+      <h3>Fleet & personal cost calculator</h3>
+      <p>Input km, vehicle type and petrol price. Get annual savings and emissions difference.</p>
+    </a>
+    <a href="/vehicles.html" class="tool">
+      <div class="tool-num">02</div>
+      <h3>Model cost comparison</h3>
+      <p>Ballpark monthly figures and key specs for popular scooters and cars in India.</p>
+    </a>
+    <a href="/fleet.html" class="tool">
+      <div class="tool-num">03</div>
+      <h3>Business fleet checklist</h3>
+      <p>When leasing can help a company, and when ownership is usually cheaper.</p>
+    </a>
+  </div>
+</section>
+
+<section>
+  <div class="framework">
+    <h2 class="section-title">Four questions that matter more than the EMI</h2>
+    <p class="section-desc" style="margin-bottom:0">Answer these honestly before comparing any lease quote.</p>
+    <div class="framework-grid">
+      <div class="q">
+        <h4>1. How long will you keep the vehicle?</h4>
+        <p>Short horizon (2–4 years) often favours leasing. Long horizon usually favours buying.</p>
+      </div>
+      <div class="q">
+        <h4>2. Who carries residual value risk?</h4>
+        <p>EVs can depreciate quickly. Leasing shifts that risk — and you pay for the shift.</p>
+      </div>
+      <div class="q">
+        <h4>3. What is your real annual mileage?</h4>
+        <p>High km makes the lower energy cost of EVs more valuable. Low km reduces the edge.</p>
+      </div>
+      <div class="q">
+        <h4>4. Can you charge at home or office?</h4>
+        <p>Home charging is a major practical and cost advantage. Public-only charging changes the math.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Indicative monthly ranges</h2>
+  <p class="section-desc">Rough market observations only. Actual quotes depend on city, tenure, credit and down payment.</p>
+  <div class="numbers">
+    <div class="num-card">
+      <div class="label">Electric scooter</div>
+      <div class="value">₹3–6k</div>
+    </div>
+    <div class="num-card">
+      <div class="label">Entry EV car</div>
+      <div class="value">₹8–13k</div>
+    </div>
+    <div class="num-card">
+      <div class="label">Compact EV SUV</div>
+      <div class="value">₹14–22k</div>
+    </div>
+    <div class="num-card">
+      <div class="label">Premium EV</div>
+      <div class="value">₹25k+</div>
+    </div>
+  </div>
+</section>
+
+<div class="notice">
+  <strong>Disclaimer:</strong> EV Leasing.in provides independent information and tools. We do not offer leases, sell vehicles, or act as a broker. Any numbers shown are estimates for education. Always confirm current terms, total cost and contract details with licensed providers.
+</div>
+
+<footer>
+  <div>© 2026 EV Leasing.in · Independent cost & decision tools</div>
+  <div>
+    <a href="/calculator.html">Calculator</a>
+    <a href="/vehicles.html">Compare</a>
+    <a href="/privacy-policy.html">Privacy</a>
+  </div>
+</footer>
+
+</body>
+</html>
