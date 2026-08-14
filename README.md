@@ -1,29 +1,27 @@
 # EV Leasing.in
 
-**India's independent EV cost & decision hub.**
+Independent EV cost comparisons, data and guides for India.
 
-Free calculators and clear analysis so people can decide whether leasing or buying an EV makes financial sense — without sales pressure.
+## Purpose
 
-## What this is
+Build a durable reference site around:
 
-- Not a leasing company
-- No inventory, no broker role
-- Tools + honest information only
+- Structured comparison data (models, cost bands, key specs)
+- Practical calculators
+- Regular long-form guides for search visibility and domain value
 
-## Pages
+No sales, no brokerage, no inventory.
 
-| File | Purpose |
-|------|---------|
-| `index.html` | Homepage |
-| `calculator.html` | Cost / savings calculator |
-| `vehicles.html` | Model comparisons |
-| `fleet.html` | Business fleet guide |
-| `privacy-policy.html` | Privacy policy |
+## Structure
+
+| Path | Role |
+|------|------|
+| `index.html` | Hub |
+| `calculator.html` | Running-cost tool |
+| `vehicles.html` | Comparison table |
+| `guides/` | Articles (SEO footprint) |
+| `privacy-policy.html` | Privacy |
 
 ## Domain
 
-Intended for `evleasing.in` (GitHub Pages).
-
-## Monetization path
-
-Affiliate links, lead forms to real providers, and display ads once traffic exists.
+Intended for `evleasing.in` via GitHub Pages.
