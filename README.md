@@ -19,6 +19,8 @@ No sales, no brokerage, no inventory.
 | `index.html` | Hub |
 | `calculator.html` | Running-cost tool |
 | `vehicles.html` | Comparison table |
+| `guides/index.html` | Guide index / tree branch hub |
+| `guides/index.html` | Guide index / tree branch hub |
 | `guides/` | Articles (SEO footprint) |
 | `privacy-policy.html` | Privacy |
 

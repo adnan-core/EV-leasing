@@ -227,6 +227,19 @@
     color: var(--accent);
   }
 
+  .site-map { padding-top: 1.5rem; }
+  .tree { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: 1.5rem; }
+  .tree-root { position: relative; }
+  .tree-root::after { content: ''; position: absolute; left: 1.15rem; top: 2.85rem; bottom: 1.35rem; border-left: 1px solid #c9ddd6; }
+  .tree-node { position: relative; z-index: 1; display: inline-flex; flex-direction: column; gap: 0.15rem; width: fit-content; padding: 0.65rem 0.85rem; border: 1px solid #c9ddd6; border-radius: 8px; background: var(--accent-soft); color: var(--ink); text-decoration: none; font-weight: 700; }
+  .tree-node span { color: var(--accent); font-size: 0.75rem; font-weight: 500; }
+  .tree-node:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .tree-node-root { margin-bottom: 1.1rem; }
+  .tree-branches { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.25rem; margin-left: 2.4rem; }
+  .tree-branch { position: relative; padding-left: 1rem; }
+  .tree-branch::before { content: ''; position: absolute; left: -1.25rem; top: 1.3rem; width: 1.25rem; border-top: 1px solid #c9ddd6; }
+  .tree-branch p { color: var(--muted); font-size: 0.82rem; margin-top: 0.45rem; max-width: 28ch; }
+
   .note {
     background: var(--surface);
     border: 1px solid var(--line);
@@ -261,6 +274,7 @@
   @media (max-width: 860px) {
     .tools { grid-template-columns: 1fr; }
     .numbers { grid-template-columns: 1fr 1fr; }
+    .tree-branches { grid-template-columns: 1fr; }
     .nav-links { display: none; }
   }
 </style>
@@ -349,6 +363,34 @@
     <div class="num-card">
       <div class="label">Premium EV</div>
       <div class="value">₹25k+</div>
+    </div>
+  </div>
+</section>
+
+<section class="site-map" aria-labelledby="site-map-title">
+  <h2 class="section-title" id="site-map-title">Explore the site</h2>
+  <p class="section-desc">A simple path from the homepage to the tools, comparisons and deeper guides.</p>
+  <div class="tree" role="list">
+    <div class="tree-root" role="listitem">
+      <a href="/" class="tree-node tree-node-root">EV Leasing.in <span>Homepage</span></a>
+      <div class="tree-branches">
+        <div class="tree-branch" role="listitem">
+          <a href="/calculator.html" class="tree-node">Tools <span>Calculator</span></a>
+          <p>Estimate energy, maintenance and CO₂ differences.</p>
+        </div>
+        <div class="tree-branch" role="listitem">
+          <a href="/vehicles.html" class="tree-node">Data <span>Model comparison</span></a>
+          <p>Browse indicative ranges, segments and cost bands.</p>
+        </div>
+        <div class="tree-branch" role="listitem">
+          <a href="/guides/" class="tree-node">Guides <span>Decision library</span></a>
+          <p>Follow the guide index to compare ownership questions.</p>
+        </div>
+        <div class="tree-branch" role="listitem">
+          <a href="/privacy-policy.html" class="tree-node">About <span>Privacy policy</span></a>
+          <p>Understand how calculator inputs and inquiries are handled.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
