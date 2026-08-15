@@ -4,126 +4,57 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EV Cost Calculator — EV Leasing.in</title>
-<meta name="description" content="Free calculator: estimate annual savings and CO₂ reduction by switching to EVs in India.">
+<meta name="description" content="Estimate annual savings and CO₂ reduction by switching to EVs in India.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #f7f6f3; --surface: #fff; --ink: #1a1a1a; --muted: #5c5c5c;
-    --line: #e6e4df; --accent: #0f6e56; --accent-soft: #e6f4ef;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'DM Sans', system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
-  nav {
-    background: var(--surface); border-bottom: 1px solid var(--line);
-    padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
-  }
-  .brand {
-    font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.2rem; font-weight: 700;
-    color: var(--ink); text-decoration: none;
-  }
-  .brand span { color: var(--accent); font-weight: 400; }
-  .back { color: var(--muted); text-decoration: none; font-size: 0.9rem; border: 1px solid var(--line); padding: 0.4rem 0.9rem; border-radius: 6px; }
-  .back:hover { border-color: #c9c6bf; }
-
-  .wrap { max-width: 1000px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
-  h1 {
-    font-family: 'Libre Baskerville', Georgia, serif;
-    font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 0.5rem;
-  }
-  .sub { color: var(--muted); margin-bottom: 2rem; max-width: 32rem; }
-
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
-  .panel {
-    background: var(--surface); border: 1px solid var(--line);
-    border-radius: 12px; padding: 1.6rem;
-  }
-  .panel h2 { font-size: 1.05rem; font-weight: 600; margin-bottom: 1.2rem; }
-
-  .field { margin-bottom: 1.3rem; }
-  .field label {
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 0.8rem; font-weight: 600; color: var(--muted); margin-bottom: 0.45rem;
-  }
-  .field .val { color: var(--accent); font-size: 1rem; }
-  input[type=range] {
-    width: 100%; -webkit-appearance: none; height: 4px;
-    background: var(--line); border-radius: 2px; outline: none;
-  }
-  input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none; width: 16px; height: 16px;
-    border-radius: 50%; background: var(--accent); cursor: pointer;
-  }
-  select {
-    width: 100%; padding: 0.7rem 0.85rem; border: 1px solid var(--line);
-    border-radius: 8px; background: var(--bg); font-family: inherit; font-size: 0.9rem;
-  }
-
-  .result {
-    background: var(--accent-soft); border: 1px solid #b8e0d0;
-    border-radius: 10px; padding: 1.2rem; margin-bottom: 1rem;
-  }
-  .result .tag { font-size: 0.72rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.04em; }
-  .result .num {
-    font-family: 'Libre Baskerville', Georgia, serif;
-    font-size: 1.9rem; font-weight: 700; color: var(--accent); margin: 0.2rem 0;
-  }
-  .result .hint { font-size: 0.82rem; color: var(--muted); }
-
-  .breakdown { font-size: 0.88rem; }
-  .breakdown .row {
-    display: flex; justify-content: space-between; padding: 0.55rem 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .breakdown .row:last-child { border-bottom: none; font-weight: 600; }
-  .petrol { color: #b45309; }
-  .ev { color: var(--accent); }
-
-  .note {
-    margin-top: 2rem; font-size: 0.82rem; color: var(--muted);
-    background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 0.9rem 1rem;
-  }
-
-  footer {
-    border-top: 1px solid var(--line); padding: 1.5rem 5%;
-    text-align: center; font-size: 0.85rem; color: var(--muted);
-  }
-
-  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+  :root { --bg:#f7f6f3; --surface:#fff; --ink:#1a1a1a; --muted:#5c5c5c; --line:#e6e4df; --accent:#0f6e56; --accent-soft:#e6f4ef; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'DM Sans',system-ui,sans-serif; background:var(--bg); color:var(--ink); line-height:1.6; }
+  nav { background:var(--surface); border-bottom:1px solid var(--line); padding:1rem 5%; display:flex; justify-content:space-between; align-items:center; }
+  .brand { font-family:'Libre Baskerville',Georgia,serif; font-size:1.2rem; font-weight:700; color:var(--ink); text-decoration:none; }
+  .brand span { color:var(--accent); font-weight:400; }
+  .back { color:var(--muted); text-decoration:none; font-size:0.9rem; border:1px solid var(--line); padding:0.4rem 0.9rem; border-radius:6px; }
+  .wrap { max-width:1000px; margin:0 auto; padding:2.5rem 5% 4rem; }
+  h1 { font-family:'Libre Baskerville',Georgia,serif; font-size:clamp(1.8rem,4vw,2.4rem); margin-bottom:0.5rem; }
+  .sub { color:var(--muted); margin-bottom:2rem; max-width:32rem; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; align-items:start; }
+  .panel { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:1.6rem; }
+  .panel h2 { font-size:1.05rem; font-weight:600; margin-bottom:1.2rem; }
+  .field { margin-bottom:1.3rem; }
+  .field label { display:flex; justify-content:space-between; align-items:center; font-size:0.8rem; font-weight:600; color:var(--muted); margin-bottom:0.45rem; }
+  .field .val { color:var(--accent); font-size:1rem; }
+  input[type=range] { width:100%; -webkit-appearance:none; height:4px; background:var(--line); border-radius:2px; outline:none; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; width:16px; height:16px; border-radius:50%; background:var(--accent); cursor:pointer; }
+  select { width:100%; padding:0.7rem 0.85rem; border:1px solid var(--line); border-radius:8px; background:var(--bg); font-family:inherit; font-size:0.9rem; }
+  .result { background:var(--accent-soft); border:1px solid #b8e0d0; border-radius:10px; padding:1.2rem; margin-bottom:1rem; }
+  .result .tag { font-size:0.72rem; font-weight:600; color:var(--accent); text-transform:uppercase; letter-spacing:0.04em; }
+  .result .num { font-family:'Libre Baskerville',Georgia,serif; font-size:1.9rem; font-weight:700; color:var(--accent); margin:0.2rem 0; }
+  .result .hint { font-size:0.82rem; color:var(--muted); }
+  .breakdown { font-size:0.88rem; }
+  .breakdown .row { display:flex; justify-content:space-between; padding:0.55rem 0; border-bottom:1px solid var(--line); }
+  .breakdown .row:last-child { border-bottom:none; font-weight:600; }
+  .petrol { color:#b45309; } .ev { color:var(--accent); }
+  .note { margin-top:2rem; font-size:0.82rem; color:var(--muted); background:#fff7ed; border:1px solid #fed7aa; border-radius:8px; padding:0.9rem 1rem; }
+  footer { border-top:1px solid var(--line); padding:1.5rem 5%; text-align:center; font-size:0.85rem; color:var(--muted); }
+  @media (max-width:720px) { .grid { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
-
 <nav>
-  <a href="/" class="brand">EV<span>Leasing.in</span></a>
-  <a href="/" class="back">← Home</a>
+  <a href="index.html" class="brand">EV<span>Leasing.in</span></a>
+  <a href="index.html" class="back">← Home</a>
 </nav>
-
 <div class="wrap">
   <h1>EV cost calculator</h1>
   <p class="sub">Estimate annual running-cost difference and CO₂ impact versus petrol. Educational figures only.</p>
-
   <div class="grid">
     <div class="panel">
       <h2>Your inputs</h2>
-
-      <div class="field">
-        <label><span>Number of vehicles</span><span class="val" id="v-val">10</span></label>
-        <input type="range" id="vehicles" min="1" max="100" value="10" oninput="calc()">
-      </div>
-
-      <div class="field">
-        <label><span>Km per vehicle per day</span><span class="val" id="km-val">80 km</span></label>
-        <input type="range" id="km" min="20" max="300" value="80" oninput="calc()">
-      </div>
-
-      <div class="field">
-        <label><span>Petrol price (₹/litre)</span><span class="val" id="pp-val">₹103</span></label>
-        <input type="range" id="petrol" min="85" max="130" value="103" oninput="calc()">
-      </div>
-
-      <div class="field">
-        <label><span>Vehicle type</span></label>
+      <div class="field"><label><span>Number of vehicles</span><span class="val" id="v-val">10</span></label><input type="range" id="vehicles" min="1" max="100" value="10" oninput="calc()"></div>
+      <div class="field"><label><span>Km per vehicle per day</span><span class="val" id="km-val">80 km</span></label><input type="range" id="km" min="20" max="300" value="80" oninput="calc()"></div>
+      <div class="field"><label><span>Petrol price (₹/litre)</span><span class="val" id="pp-val">₹103</span></label><input type="range" id="petrol" min="85" max="130" value="103" oninput="calc()"></div>
+      <div class="field"><label><span>Vehicle type</span></label>
         <select id="vtype" onchange="calc()">
           <option value="2w">Two-wheeler / scooter</option>
           <option value="3w">Three-wheeler</option>
@@ -132,24 +63,10 @@
         </select>
       </div>
     </div>
-
     <div>
-      <div class="result">
-        <div class="tag">Estimated annual savings</div>
-        <div class="num" id="annual">—</div>
-        <div class="hint" id="annual-hint">vs petrol fleet</div>
-      </div>
-      <div class="result">
-        <div class="tag">Monthly equivalent</div>
-        <div class="num" id="monthly">—</div>
-        <div class="hint">across the fleet</div>
-      </div>
-      <div class="result">
-        <div class="tag">CO₂ reduced per year</div>
-        <div class="num" id="co2">—</div>
-        <div class="hint" id="co2-hint">approximate</div>
-      </div>
-
+      <div class="result"><div class="tag">Estimated annual savings</div><div class="num" id="annual">—</div><div class="hint" id="annual-hint">vs petrol fleet</div></div>
+      <div class="result"><div class="tag">Monthly equivalent</div><div class="num" id="monthly">—</div><div class="hint">across the fleet</div></div>
+      <div class="result"><div class="tag">CO₂ reduced per year</div><div class="num" id="co2">—</div><div class="hint" id="co2-hint">approximate</div></div>
       <div class="panel breakdown" style="margin-top:1rem">
         <h2>Annual cost breakdown</h2>
         <div class="row"><span></span><span><span class="petrol">Petrol</span> &nbsp; <span class="ev">EV</span></span></div>
@@ -159,71 +76,17 @@
       </div>
     </div>
   </div>
-
-  <div class="note">
-    <strong>Note:</strong> These are simplified estimates for education. Real lease quotes, insurance, battery health, electricity rates and usage patterns will change the outcome. Always verify with licensed providers.
-  </div>
+  <div class="note"><strong>Note:</strong> Simplified estimates for education. Real outcomes depend on usage, electricity rates and provider terms.</div>
 </div>
-
-<footer>© 2026 EV Leasing.in · Independent tools · Not a leasing company</footer>
-
+<footer>© 2026 EV Leasing.in · Independent reference</footer>
 <script>
-const specs = {
-  '2w':  { mileage: 45, evKwh: 0.03, maintP: 8000,  maintEV: 2000 },
-  '3w':  { mileage: 25, evKwh: 0.06, maintP: 18000, maintEV: 5000 },
-  '4w':  { mileage: 15, evKwh: 0.18, maintP: 35000, maintEV: 8000 },
-  'van': { mileage: 10, evKwh: 0.30, maintP: 55000, maintEV: 12000 }
-};
-
-function fmt(n) {
-  if (n >= 1e7) return '₹' + (n/1e7).toFixed(1) + ' Cr';
-  if (n >= 1e5) return '₹' + (n/1e5).toFixed(1) + 'L';
-  if (n >= 1e3) return '₹' + (n/1e3).toFixed(1) + 'K';
-  return '₹' + Math.round(n).toLocaleString('en-IN');
-}
-
-function calc() {
-  const v  = +document.getElementById('vehicles').value;
-  const km = +document.getElementById('km').value;
-  const pp = +document.getElementById('petrol').value;
-  const s  = specs[document.getElementById('vtype').value];
-
-  document.getElementById('v-val').textContent = v;
-  document.getElementById('km-val').textContent = km + ' km';
-  document.getElementById('pp-val').textContent = '₹' + pp;
-
-  const kmYear = km * 300 * v;
-  const litres = kmYear / s.mileage;
-  const kwh    = kmYear * s.evKwh;
-
-  const pFuel  = litres * pp;
-  const pMaint = s.maintP * v;
-  const pTotal = pFuel + pMaint;
-
-  const eFuel  = kwh * 8;
-  const eMaint = s.maintEV * v;
-  const eTotal = eFuel + eMaint;
-
-  const save = pTotal - eTotal;
-  const co2P = litres * 2.31;
-  const co2E = kwh * 0.82;
-  const co2S = co2P - co2E;
-  const trees = Math.round(co2S / 21);
-
-  document.getElementById('annual').textContent = fmt(save);
-  document.getElementById('annual-hint').textContent = v + ' vehicle(s) vs petrol (estimate)';
-  document.getElementById('monthly').textContent = fmt(save / 12);
-  document.getElementById('co2').textContent = Math.round(co2S).toLocaleString('en-IN') + ' kg';
-  document.getElementById('co2-hint').textContent = '≈ planting ' + trees.toLocaleString('en-IN') + ' trees / year';
-
-  document.getElementById('p-fuel').textContent  = fmt(pFuel);
-  document.getElementById('e-fuel').textContent  = fmt(eFuel);
-  document.getElementById('p-maint').textContent = fmt(pMaint);
-  document.getElementById('e-maint').textContent = fmt(eMaint);
-  document.getElementById('p-total').textContent = fmt(pTotal);
-  document.getElementById('e-total').textContent = fmt(eTotal);
-}
-
+const specs={'2w':{mileage:45,evKwh:0.03,maintP:8000,maintEV:2000},'3w':{mileage:25,evKwh:0.06,maintP:18000,maintEV:5000},'4w':{mileage:15,evKwh:0.18,maintP:35000,maintEV:8000},'van':{mileage:10,evKwh:0.30,maintP:55000,maintEV:12000}};
+function fmt(n){if(n>=1e7)return'₹'+(n/1e7).toFixed(1)+' Cr';if(n>=1e5)return'₹'+(n/1e5).toFixed(1)+'L';if(n>=1e3)return'₹'+(n/1e3).toFixed(1)+'K';return'₹'+Math.round(n).toLocaleString('en-IN');}
+function calc(){const v=+document.getElementById('vehicles').value,km=+document.getElementById('km').value,pp=+document.getElementById('petrol').value,s=specs[document.getElementById('vtype').value];
+document.getElementById('v-val').textContent=v;document.getElementById('km-val').textContent=km+' km';document.getElementById('pp-val').textContent='₹'+pp;
+const kmYear=km*300*v,litres=kmYear/s.mileage,kwh=kmYear*s.evKwh,pFuel=litres*pp,pMaint=s.maintP*v,pTotal=pFuel+pMaint,eFuel=kwh*8,eMaint=s.maintEV*v,eTotal=eFuel+eMaint,save=pTotal-eTotal,co2S=litres*2.31-kwh*0.82,trees=Math.round(co2S/21);
+document.getElementById('annual').textContent=fmt(save);document.getElementById('annual-hint').textContent=v+' vehicle(s) vs petrol (estimate)';document.getElementById('monthly').textContent=fmt(save/12);document.getElementById('co2').textContent=Math.round(co2S).toLocaleString('en-IN')+' kg';document.getElementById('co2-hint').textContent='≈ planting '+trees.toLocaleString('en-IN')+' trees / year';
+document.getElementById('p-fuel').textContent=fmt(pFuel);document.getElementById('e-fuel').textContent=fmt(eFuel);document.getElementById('p-maint').textContent=fmt(pMaint);document.getElementById('e-maint').textContent=fmt(eMaint);document.getElementById('p-total').textContent=fmt(pTotal);document.getElementById('e-total').textContent=fmt(eTotal);}
 calc();
 </script>
 </body>
