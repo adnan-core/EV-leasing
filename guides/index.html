@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guides & Articles — EV Leasing.in</title>
+<meta name="description" content="Practical guides on EV costs, lease vs buy, residual value and running costs in India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f6f3; --surface: #fff; --ink: #1a1a1a; --muted: #5c5c5c;
+    --line: #e6e4df; --accent: #0f6e56;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; }
+  nav {
+    background: var(--surface); border-bottom: 1px solid var(--line);
+    padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center;
+  }
+  .brand {
+    font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.2rem; font-weight: 700;
+    color: var(--ink); text-decoration: none;
+  }
+  .brand span { color: var(--accent); font-weight: 400; }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+  .nav-links a:hover { color: var(--ink); }
+
+  .wrap { max-width: 800px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
+  h1 {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: clamp(1.7rem, 4vw, 2.3rem); margin-bottom: 0.5rem;
+  }
+  .sub { color: var(--muted); margin-bottom: 2rem; }
+
+  .list { display: flex; flex-direction: column; gap: 1rem; }
+  .item {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 10px; padding: 1.35rem 1.5rem;
+    text-decoration: none; color: inherit; display: block;
+    transition: 0.15s ease;
+  }
+  .item:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(15,110,86,0.06); }
+  .item .meta {
+    font-size: 0.72rem; color: var(--muted); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 0.4rem;
+  }
+  .item h2 {
+    font-size: 1.15rem; font-weight: 600; margin-bottom: 0.35rem; line-height: 1.35;
+  }
+  .item p { font-size: 0.9rem; color: var(--muted); }
+
+  footer {
+    border-top: 1px solid var(--line); padding: 1.5rem 5%;
+    text-align: center; font-size: 0.85rem; color: var(--muted);
+  }
+  @media (max-width: 600px) { .nav-links { display: none; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="brand">EV<span>Leasing.in</span></a>
+  <ul class="nav-links">
+    <li><a href="../calculator.html">Calculator</a></li>
+    <li><a href="../vehicles.html">Compare</a></li>
+    <li><a href="index.html">Guides</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+  <h1>Guides & articles</h1>
+  <p class="sub">Practical reads on EV costs and decisions in India. Click a title to open the full article.</p>
+
+  <div class="list">
+    <a href="lease-vs-buy.html" class="item">
+      <div class="meta">Guide · Decision</div>
+      <h2>Lease vs buy an EV in India: a practical framework</h2>
+      <p>Holding period, residual risk, mileage and charging access — how they change the answer.</p>
+    </a>
+    <a href="running-costs.html" class="item">
+      <div class="meta">Guide · Costs</div>
+      <h2>What actually drives EV running costs</h2>
+      <p>Energy price, maintenance, tyre wear and the role of home charging.</p>
+    </a>
+    <a href="residual-value.html" class="item">
+      <div class="meta">Guide · Ownership</div>
+      <h2>Residual value risk on electric vehicles</h2>
+      <p>Why depreciation behaviour can differ from ICE and what that means for lease vs own.</p>
+    </a>
+  </div>
+</div>
+
+<footer>© 2026 EV Leasing.in · Independent reference</footer>
+</body>
+</html>
